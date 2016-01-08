@@ -17,15 +17,15 @@ public class Coppter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        thisBody.AddForce(transform.forward * controlSpeed * Input.GetAxis("Vertical"));
-        thisBody.AddTorque(0, Input.GetAxis("Horizontal") * turnSpeed, 0);
+        thisBody.AddForce(transform.forward * controlSpeed * Input.GetAxis("Vertical") * thisBody.mass);
+        thisBody.AddTorque(0, Input.GetAxis("Horizontal") * turnSpeed * thisBody.mass, 0);
         if (Input.GetButton("Fire1"))
         {
-            thisBody.AddForce(0, liftPower, 0);
+            thisBody.AddForce(0, liftPower * thisBody.mass, 0);
         }
         if (Input.GetButton("Fire2"))
         {
-            thisBody.AddForce(0, -dropSpeed, 0);
+            thisBody.AddForce(0, -dropSpeed * thisBody.mass, 0);
         }
 	}
 }
