@@ -40,34 +40,34 @@ public class Pig_LegController : MonoBehaviour
             //Back
             case 0:
                 //Print out to make sure this is working
-                print("back");
+                //print("back");
                 PigBody.GetComponent<Rigidbody>().velocity += Vector3.back * Random.Range(0, randVel);
                 break;
             //Forward
             case 1:
-                print("forward");
+               // print("forward");
                 PigBody.GetComponent<Rigidbody>().velocity += Vector3.forward * Random.Range(0, randVel);
                 break;
             //Left
             case 2:
-                print("left");
+                //print("left");
                 PigBody.GetComponent<Rigidbody>().velocity += Vector3.left * Random.Range(0, randVel);
                 break;
             //Right
             case 3:
-                print("right");
+                //print("right");
                 PigBody.GetComponent<Rigidbody>().velocity += Vector3.right * Random.Range(0, randVel);
                 break;
             //Up
             case 4:
-                print("up");
+                //print("up");
                 PigBody.GetComponent<Rigidbody>().velocity += Vector3.up * Random.Range(0, randVel);
                 break;
 
             //If something happens to out of scope my rand
             //default will just keep the pig going
             default:
-                print("default");
+                //print("default");
                 break;
         }
         
