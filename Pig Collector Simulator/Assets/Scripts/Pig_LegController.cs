@@ -9,9 +9,11 @@ public class Pig_LegController : MonoBehaviour
     public int randVel;
 
     // Use this for initialization
-    void Start()
+    //Using awake instead of start in this script since pigs are spawned in at runtime
+    void Awake()
     {
         //Get the body of the pig
+        //Yes I have to dig up the tree quite a bit to get the proper object
         PigBody = transform.parent.parent.parent.gameObject;
     }
 
@@ -35,33 +37,34 @@ public class Pig_LegController : MonoBehaviour
         //PigBody.GetComponent<Rigidbody>().velocity = -PigBody.GetComponent<Rigidbody>().velocity;
         //Get a random direction
         int randDir = Random.Range(0, 4);
+        float actRandVel = Random.Range(0, randVel);
         switch(randDir)
         {
             //Back
             case 0:
                 //Print out to make sure this is working
                 //print("back");
-                PigBody.GetComponent<Rigidbody>().velocity += Vector3.back * Random.Range(0, randVel);
+                PigBody.GetComponent<Rigidbody>().velocity += Vector3.back * Random.Range(0, actRandVel);
                 break;
             //Forward
             case 1:
                // print("forward");
-                PigBody.GetComponent<Rigidbody>().velocity += Vector3.forward * Random.Range(0, randVel);
+                PigBody.GetComponent<Rigidbody>().velocity += Vector3.forward * Random.Range(0, actRandVel);
                 break;
             //Left
             case 2:
                 //print("left");
-                PigBody.GetComponent<Rigidbody>().velocity += Vector3.left * Random.Range(0, randVel);
+                PigBody.GetComponent<Rigidbody>().velocity += Vector3.left * Random.Range(0, actRandVel);
                 break;
             //Right
             case 3:
                 //print("right");
-                PigBody.GetComponent<Rigidbody>().velocity += Vector3.right * Random.Range(0, randVel);
+                PigBody.GetComponent<Rigidbody>().velocity += Vector3.right * Random.Range(0, actRandVel);
                 break;
             //Up
             case 4:
                 //print("up");
-                PigBody.GetComponent<Rigidbody>().velocity += Vector3.up * Random.Range(0, randVel);
+                PigBody.GetComponent<Rigidbody>().velocity += Vector3.up * Random.Range(0, actRandVel);
                 break;
 
             //If something happens to out of scope my rand
@@ -74,14 +77,16 @@ public class Pig_LegController : MonoBehaviour
     }
 
     /*Quick little randomizer funtion that can be coppied over to any other script*/
-    float Randomizer(int seed)
-    {
-        //Random number to return
-        float rand;
+    //float Randomizer(int seed)
+    //{
+    //    //Random number to return
+    //    float rand = 0;
 
-        //Set the seed
-        Random.seed = seed;
+    //    //Set the seed
+    //    Random.seed = seed;
 
-        return rand = Random.value;
-    }
+    //    return rand = Random.value;
+    //}
+
+    // ^^^ saving this code block for later reference
 }

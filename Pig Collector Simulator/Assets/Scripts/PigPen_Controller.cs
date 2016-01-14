@@ -4,6 +4,7 @@ using System.Collections;
 public class PigPen_Controller : MonoBehaviour
 {
     public int pigsInPen = 0;
+    private bool isColliding = false;
 
     // Use this for initialization
     void Start()
@@ -13,14 +14,16 @@ public class PigPen_Controller : MonoBehaviour
 
     void Update()
     {
-        
+        isColliding = false;
     }
 
     void OnTriggerEnter(Collider collision)
     {
         //print("Collision w/ pen!");
-        if (collision.gameObject.tag.ToString() == "Pig")
+        if (collision.gameObject.tag.ToString() == "Pig" && collision.gameObject.name == "Body")
         {
+            if (isColliding) return;
+            isColliding = true;
 
             pigsInPen++;
             collision.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
