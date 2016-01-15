@@ -1,0 +1,23 @@
+WHAT IF you had bouncy pigs but THEN you had to get them into a meat grinder
+
+TREATMENT:
+You are a butcher who got a new shipment of pigs in recently. But there is
+something different about these ones. They bounce around like a rubber ball.
+So you decide to play a little game with them and try to bounce the pigs into
+the meat grinder.
+
+MECHANICS:
+	- Pigs are super bouncy
+	- There are objects in the way
+	- Meat Grinder has a cylidrical mouth so pigs can bounce out
+
+
+
+
+
+PROPOSAL:
+
+3D game in which you fly a helicopter around trying to collect pigs with a claw
+attatched to the helicopter via a rope. The goal is to get all the pigs into the
+pen. What makes this a difficult task is the fact that the pigs are super bouncy
+and will spring off in a random direction whenever they land on their feet.

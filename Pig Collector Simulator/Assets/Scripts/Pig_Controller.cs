@@ -34,9 +34,10 @@ public class Pig_Controller : MonoBehaviour
     {
         if (!firstTimeVelocitySave)
         {
-            print("Collision!"); //<--- Testing to make sure function works properly
+            //print("Collision!"); //<--- Testing to make sure function works properly
             //Get the objects velocity
             savedVelocity = gameObject.GetComponent<Rigidbody>().velocity;
+            //savedVelocity.y = (savedVelocity.x + savedVelocity.z) / 2
             firstTimeVelocitySave = true;
         }
 
@@ -44,7 +45,7 @@ public class Pig_Controller : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().velocity = savedVelocity;
         //Decrement y velocity over time however the user may want
         //savedVelocity.x = savedVelocity.x / BounceRate;
-        savedVelocity.y = savedVelocity.y / BounceRate;
+        //savedVelocity.y = savedVelocity.y / BounceRate;
         //savedVelocity.z = savedVelocity.z / BounceRate;
     }
 }
