@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Coppter : MonoBehaviour {
+public class Coppter : MonoBehaviour
+{
 
     private Rigidbody thisBody;
 
@@ -9,14 +10,16 @@ public class Coppter : MonoBehaviour {
     public float turnSpeed = 1;
     public float liftPower = 1;
     public float dropSpeed = 1;
-    
 
-	void Start () {
+
+    void Start()
+    {
         thisBody = GetComponent<Rigidbody>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         thisBody.AddForce(transform.forward * controlSpeed * Input.GetAxis("Vertical") * thisBody.mass);
         thisBody.AddTorque(0, Input.GetAxis("Horizontal") * turnSpeed * thisBody.mass, 0);
         if (Input.GetButton("Fire1"))
@@ -27,5 +30,12 @@ public class Coppter : MonoBehaviour {
         {
             thisBody.AddForce(0, -dropSpeed * thisBody.mass, 0);
         }
-	}
+
+
+        // Quickly adding a quit button for the user to exit
+        if(Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
+    }
 }
