@@ -20,12 +20,14 @@ public class Level_PigController : MonoBehaviour
     public Text WinningText;
     public float randVel;
     public float delay;
+    public GameObject particleToCreate;
 
 
     //Private variables
     private GameObject[] pigs;
     private Vector3 randPos;
     private int top;
+    private bool particlesHaveSpawned = false;
    
 
 
@@ -110,6 +112,7 @@ public class Level_PigController : MonoBehaviour
 
         RandomVel();
         DestroyLimbs();
+
     }
 
     void RandomVel()
@@ -181,6 +184,13 @@ public class Level_PigController : MonoBehaviour
                 //Body of pig
                 if (child.gameObject.GetComponent<HingeJoint>())
                 {
+                    if (particlesHaveSpawned == false)
+                    {
+                        //create new particle as a gameobject
+                        GameObject tempObject = (GameObject)Instantiate(particleToCreate, pig.transform.position, Quaternion.identity);
+                        //set parent as the latest gameObject
+                        tempObject.transform.parent = child.transform;
+                    }
                     Destroy(child.gameObject.GetComponent<HingeJoint>(), delay);
                 }
 
@@ -192,9 +202,16 @@ public class Level_PigController : MonoBehaviour
                     //Legs back/ legs front
                     foreach (Transform subSubChild in subChild.gameObject.transform)
                     {
-                        print(subSubChild.gameObject.name);
+                        //print(subSubChild.gameObject.name);
                         if (subSubChild.gameObject.GetComponent<HingeJoint>())
                         {
+                            if (particlesHaveSpawned == false)
+                            {
+                                //create new particle as a gameobject
+                                GameObject tempObject = (GameObject)Instantiate(particleToCreate, pig.transform.position, Quaternion.identity);
+                                //set parent as the latest gameObject
+                                tempObject.transform.parent = subSubChild.transform;
+                            }
                             Destroy(subSubChild.gameObject.GetComponent<HingeJoint>(), delay);
                         }
                     }
@@ -202,9 +219,7 @@ public class Level_PigController : MonoBehaviour
             }
         }
 
-        //After everything is getting ready to be destroyed
-        //Let the blood fly
-        BloodyTime();
+        particlesHaveSpawned = true;
     }
 
     void BloodyTime()
